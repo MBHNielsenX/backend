@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Employee search</title>
+    <link rel="stylesheet" th:href="@{style.css}"  type="text/css">
+</head>
+<body>
+<input type="hidden" th:value="${message}" id="message-js">
+<h1>Search for a single employee</h1> <br> <br>
+
+<span th:if="${employee == null}">
+    <form method="get" action="/single-employee" >
+    <label for="employee_number_fail">Enter employee ID</label>
+    <input type="text" id="employee_number_fail" name="employee"/> <br> <br>
+    <input type="submit" name="search">
+    </form>
+</span>
+
+<span th:if="${employee != null}">
+<form method="get" action="/search-single-employee" >
+    <label for="employee_number">Enter employee ID</label>
+    <input type="text" id="employee_number" name="employee"/> <br> <br>
+    <input type="submit" name="search">
+</form>
+
+<br> <br>
+
+<div class="popup-form" id="employeePopup">
+    <form class="form-container">
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Manager</th>
+                <th>Hiredate</th>
+                <th>Department number</th>
+            </tr>
+
+            <tr th:each="employee : ${employee}">
+                <td th:text="${employee.getEmployeeID()}"></td>
+                <td th:text="${employee.getName()}"></td>
+                <td th:text="${employee.getJob()}"></td>
+                <td th:text="${employee.getManagerID()}"></td>
+                <td th:text="${employee.getHireDate()}"></td>
+                <td th:text="${employee.getDepartmentNumber()}"></td>
+
+            </tr>
+        </table>
+    </form>
+</div>
+</span>
+<script>
+    window.onload = checkMessage();
+    function checkMessage() {
+        const messageValue = document.getElementById("message-js").value
+        const tmp = "First time"
+
+
+        if (messageValue !== tmp) {
+            openLoginForm();
+        } else {
+            closeLoginForm();
+        }
+
+    }
+    function openLoginForm() {
+        document.getElementById("employeePopup").style.display = "block";
+    }
+    function closeLoginForm() {
+        document.getElementById("employeePopup").style.display = "none";
+    }
+</script>
+</body>
+</html>

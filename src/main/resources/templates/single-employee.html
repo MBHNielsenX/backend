@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>Employee search</title>
+    <link rel="stylesheet" th:href="@{style.css}"  type="text/css">
+</head>
+<body>
+<input type="hidden" th:value="${message}" id="message-js">
+<h1>Search for a single employee</h1> <br> <br>
+
+<form method="get" action="/search-single-employee" >
+    <label for="employee_number">Enter employee ID</label>
+    <input type="text" id="employee_number" th:name="id"/> <br> <br>
+    <input type="submit" name="search">
+</form>
+
+</body>
+</html>

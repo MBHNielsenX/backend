@@ -15,6 +15,10 @@ public class DepartmentController {
 
     @GetMapping("/departments")
     public String allDepartments(Model model){
+        DepartmentRepository dr = new DepartmentRepository();
+
+        ArrayList<Department> deparmentEntities = dr.getAllEntities();
+        model.addAttribute("departments", deparmentEntities);
         return "departments";
     }
 }

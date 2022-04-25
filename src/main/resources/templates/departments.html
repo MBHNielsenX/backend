@@ -7,12 +7,18 @@
 </head>
 <body>
     <h1>An overview of our departments</h1>
+
     <table>
-        <tr
-            th:each="department : ${departments}">
-            <td th:text="${department.getDeptno()}"></td>
-            <td th:text="${department.getDeptName()}"></td>
-            <td th:text="${department.getLocation()}"></td>
+        <tr>
+            <th>Department number</th>
+            <th>Department name</th>
+            <th>Department location</th>
+        </tr>
+
+        <tr th:each="department : ${departments}">
+            <td id="no" th:text="${department.getDeptno()}"></td>
+            <td id="name" th:text="${department.getDeptName()}"></td>
+            <td id="location" th:text="${department.getLocation()}"></td>
         </tr>
     </table>
 </body>

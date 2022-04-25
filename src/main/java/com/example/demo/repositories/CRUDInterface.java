@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface CRUDInterface <T>{
     //Create
-    public boolean create(T entity);
+    public void create(T entity);
 
     //Read
-    public T getSingleEntityById();
+    public T getSingleEntityById(int iD);
     public List<T> getAllEntities();
 
     //Update
